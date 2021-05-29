@@ -9,7 +9,7 @@ namespace DatchikiSharp.Core
         public DbSet<Room> Rooms { get; set; }
         public DbSet<Scaner> Scaners { get; set; }
         public DbSet<RoomEvent> RoomEvents { get; set; }
-        public DbSet<SecurityEvent> SecurityEvents { get; set; }
+        public DbSet<ScanerJsonEvent> ScanerEvents { get; set; }
         public ScanerContext(DbContextOptions<ScanerContext> options)
             : base(options)
         { }
@@ -18,7 +18,6 @@ namespace DatchikiSharp.Core
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<RoomEvent>().HasKey(re => re.RoomId);
-            modelBuilder.Entity<SecurityEvent>().HasKey(se => se.ScanerId);
         }
     }
 }

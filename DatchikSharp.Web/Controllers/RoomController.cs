@@ -1,5 +1,6 @@
 using System.Threading.Tasks;
 using DatchikiSharp.Core;
+using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
@@ -13,12 +14,16 @@ namespace DatchikSharp.Web.Controllers
         {
             _context = context;
         }
-
-        // GET
         public async Task<IActionResult> Index()
         {
             var models = await _context.Rooms.Include(r => r.Scaners).ToListAsync();
             return View(models);
+        }
+        [Microsoft.AspNetCore.Mvc.Route("{controller}/{id}")]
+        public async Task<IActionResult> Room(int id)
+        {
+            var model = await _context.Rooms.Include(r => r.Scaners).FirstOrDefaultAsync(r => r.Id.Equals(id));
+            return View(model);
         }
     }
 }

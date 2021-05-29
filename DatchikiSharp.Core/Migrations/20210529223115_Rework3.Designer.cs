@@ -3,14 +3,16 @@ using System;
 using DatchikiSharp.Core;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace DatchikiSharp.Core.Migrations
 {
     [DbContext(typeof(ScanerContext))]
-    partial class ScanerContextModelSnapshot : ModelSnapshot
+    [Migration("20210529223115_Rework3")]
+    partial class Rework3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
