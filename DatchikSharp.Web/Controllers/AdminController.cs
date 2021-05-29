@@ -1,13 +1,50 @@
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Threading.Tasks;
+using DatchikiSharp.Core;
+using DatchikiSharp.Core.Entitites;
+using DatchikSharp.ViewModels;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace DatchikSharp.Web.Controllers
 {
     public class AdminController : Controller
     {
-        // GET
-        public IActionResult Index()
+        private readonly ScanerContext _context;
+
+        public AdminController(ScanerContext context)
+        {
+            _context = context;
+        }
+
+        public async Task<IActionResult> Index()
+        {
+            var model = new RoomsScanersViewModel()
+            {
+                Rooms = await _context.Rooms.ToListAsync(),
+                Scaners = await _context.Scaners.ToListAsync()
+            };
+            return View(model);
+        }
+        [HttpGet]
+        public async Task<IActionResult> CreateEdit()
         {
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateEdit(Scaner model)
+        {
+            if (ModelState.IsValid && !_context.Scaners.Any(s => s.Id == model.Id))
+            {
+                await _context.Scaners.AddAsync(model);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(model);
+            }
         }
     }
 }

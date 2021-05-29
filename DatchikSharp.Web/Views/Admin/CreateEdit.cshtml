@@ -1,0 +1,50 @@
+@model DatchikiSharp.Core.Entitites.Scaner
+<div>
+  <form asp-action="CreateEdit" id="form">
+    <div class="validation" asp-validation-summary="ModelOnly"></div>
+    <label>Name:</label><br/>
+    <input type="text" asp-for="Name"/><br/><br/>
+    <span asp-validation-for="Name"></span>
+    <label>Serial number:</label><br/>
+    <input type="text" asp-for="Id"/><br/><br/>
+    <label>Room:</label><br/>
+    <select type="text" name="RoomId" id="roomsSelect">
+    </select>
+    <label>Type:</label><br/>
+    <select asp-for="Type">
+      <option value="1">Movement</option>
+      <option value="2">Smoke</option>
+    </select><br><br>
+    <input type="submit" value="Отправить"/>
+    <div v-for="room in rooms">{{room.id}}</div>
+  </form>
+</div>
+<script>
+    let form = new Vue({
+        el: '#form',
+        data: function () {
+          return {
+            rooms: [],
+          };
+        },
+        methods: {
+          getData: function () {
+            var self = this;
+            $.ajax({
+              url: '@Url.Action("GetListRooms", "RoomApi")',
+              type: 'GET',
+              datatype: 'json',
+              contentType: 'application/json'
+            }).done(function (data) {
+              self.rooms = data;
+              for (let d of data){
+                $("#roomsSelect").append( "<option value="+d.id+">"+d.number+"</option>" );
+              }
+            });
+          }
+        },
+        mounted: function () {
+          this.getData();
+        }
+      });
+</script>

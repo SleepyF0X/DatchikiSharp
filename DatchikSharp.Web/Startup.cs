@@ -20,7 +20,7 @@ namespace DatchikSharp
         private IConfiguration _configuration { get; }
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddControllersWithViews();
+            services.AddControllersWithViews().AddRazorRuntimeCompilation();
             var cs = _configuration.GetConnectionString("Scaner");
             services.AddDbContext<ScanerContext>(options =>
                 options.UseMySql("server=localhost;database=scanerDB;userid=root;password=Kotofey_486;", new MySqlServerVersion(new Version(8, 0, 25))));
