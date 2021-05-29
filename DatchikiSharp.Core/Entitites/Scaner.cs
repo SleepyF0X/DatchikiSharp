@@ -9,7 +9,6 @@ namespace DatchikiSharp.Core.Entitites
         public Room Room { get; set; }
         [Required]
         public string Name { get; set; }
-        public string Desc { get; set; }
         public ScanerTypes Type { get; set; }
         public bool Status { get; set; }
         public bool Activity { get; set; }
@@ -17,7 +16,9 @@ namespace DatchikiSharp.Core.Entitites
 
     public enum ScanerTypes
     {
-        Movement = 1 ,
-        Smoke = 2
+        Movement = 1,
+        Smoke = 2,
+        Door = 3,
+        Window = 4,
     }
 }

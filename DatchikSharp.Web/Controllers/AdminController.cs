@@ -28,16 +28,34 @@ namespace DatchikSharp.Web.Controllers
             return View(model);
         }
         [HttpGet]
-        public async Task<IActionResult> CreateEdit()
+        public async Task<IActionResult> CreateEditScaner()
         {
             return View();
         }
         [HttpPost]
-        public async Task<IActionResult> CreateEdit(Scaner model)
+        public async Task<IActionResult> CreateEditScaner(Scaner model)
         {
             if (ModelState.IsValid && !_context.Scaners.Any(s => s.Id == model.Id))
             {
                 await _context.Scaners.AddAsync(model);
+                await _context.SaveChangesAsync();
+                return RedirectToAction("Index");
+            }
+            else
+            {
+                return View(model);
+            }
+        }
+        public async Task<IActionResult> CreateEditRoom()
+        {
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateEditRoom(Room model)
+        {
+            if (ModelState.IsValid && !_context.Rooms.Any(s => s.Number == model.Number))
+            {
+                await _context.Rooms.AddAsync(model);
                 await _context.SaveChangesAsync();
                 return RedirectToAction("Index");
             }

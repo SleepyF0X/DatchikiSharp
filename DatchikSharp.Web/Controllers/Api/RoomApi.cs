@@ -3,7 +3,7 @@ using DatchikiSharp.Core;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 
-namespace DatchikSharp.Views.Api
+namespace DatchikSharp.Web.Controllers.Api
 {
     [Route("api/rooms")]
     public class RoomApi : Controller

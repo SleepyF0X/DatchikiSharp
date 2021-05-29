@@ -1,0 +1,15 @@
+@model DatchikiSharp.Core.Entitites.Room
+<div>
+    <form asp-action="CreateEditRoom" id="form">
+        <label>Number:</label><br/>
+        <input type="text" asp-for="Number"/><br/><br/>
+        <span asp-validation-for="Number"></span>
+        <label>Size:</label><br/>
+        <input type="text" asp-for="Size"/><br/><br/>
+        <label>Type:</label><br/>
+        <select type="text" asp-for="Type"/><br/><br/>
+              <option value="1">Lecture</option>
+              <option value="2">Laboratory</option>
+        <input type="submit" value="Отправить"/>
+    </form>
+</div>

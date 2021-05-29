@@ -1,0 +1,74 @@
+@using DatchikiSharp.Core.Entitites
+@model List<DatchikiSharp.Core.Entitites.Room>
+@foreach (var room in Model)
+{
+    if (room.Scaners.Where(s => s.Type == ScanerTypes.Smoke).Any(s => s.Status == true))
+    {
+        <div class="col-md-11 col-xl-11 mt-4">
+            <div class="card shadow border-start-info py-2 bg-danger">
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col me-2">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-auto">
+                                    <div class="text-white fw-bold h5 mb-0 me-3">
+                                        <span>Room 544</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i style="font-size: 2em" class="fas fa-heart-broken text-white"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else if (room.Status)
+    {
+        <div class="col-md-11 col-xl-11 mt-4">
+            <div class="card shadow border-start-info py-2">
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col me-2">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-auto">
+                                    <div class="text-dark fw-bold h5 mb-0 me-3">
+                                        <span>Room @room.Number</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i style="font-size: 2em" class="fas fa-check text-success"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+    else if (!room.Status)
+    {
+        <div class="col-md-11 col-xl-11 mt-4">
+            <div class="card shadow border-start-info py-2">
+                <div class="card-body">
+                    <div class="row align-items-center no-gutters">
+                        <div class="col me-2">
+                            <div class="row g-0 align-items-center">
+                                <div class="col-auto">
+                                    <div class="text-dark fw-bold h5 mb-0 me-3">
+                                        <span>Room @room.Number</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-auto">
+                            <i style="font-size: 2em" class="fas fa-times text-warning"></i>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    }
+}

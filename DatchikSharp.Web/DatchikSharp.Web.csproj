@@ -21,15 +21,16 @@
 
     <ItemGroup>
       <Folder Include="node_modules\vue\dist" />
-      <Folder Include="Tits\assets\bootstrap\css" />
-      <Folder Include="Tits\assets\fonts" />
-      <Folder Include="Tits\assets\js" />
     </ItemGroup>
 
     <ItemGroup>
       <None Include="wwwroot\css\bootstrap.min.css" />
       <None Include="wwwroot\fonts\fontawesome5-overrides.min.css" />
       <None Include="wwwroot\js\script.min.js" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <Content Include="node_modules\vue\package.json" />
     </ItemGroup>
 
 </Project>
