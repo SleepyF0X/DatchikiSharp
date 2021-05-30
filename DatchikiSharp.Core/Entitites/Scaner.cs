@@ -1,4 +1,5 @@
 
+using DatchikiSharp.Core.Events;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -14,6 +15,7 @@ namespace DatchikiSharp.Core.Entitites
         public ScanerTypes Type { get; set; }
         public bool Status { get; set; }
         public bool Activity { get; set; }
+        public IEnumerable<ScanerJsonEvent> ScanerJsonEvent { get; set; }
     }
 
     public enum ScanerTypes

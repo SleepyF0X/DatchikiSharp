@@ -28,7 +28,7 @@ namespace DatchikSharp.Web.Controllers.Api
                 DateTime=DateTime.Now
             };
             await _context.ScanerEvents.AddAsync(scanerEvent);
-            (await _context.Scaners.FindAsync(scanerEvent.ScanerId)).Status = scanerEvent.Status;
+            (await _context.Scaners.FindAsync(scanerEvent.ScanerId)).Activity = scanerEvent.Status;
             await _context.SaveChangesAsync();
             return Ok();
         }

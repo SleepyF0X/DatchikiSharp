@@ -1,3 +1,5 @@
+using System;
+using System.Linq;
 using System.Threading.Tasks;
 using DatchikiSharp.Core;
 using Microsoft.AspNetCore.Components;
@@ -22,7 +24,8 @@ namespace DatchikSharp.Web.Controllers
         [Microsoft.AspNetCore.Mvc.Route("{controller}/{id}")]
         public async Task<IActionResult> Room(int id)
         {
-            var model = await _context.Rooms.Include(r => r.Scaners).FirstOrDefaultAsync(r => r.Id.Equals(id));
+            var model = await _context.Rooms.Include(r => r.Scaners).ThenInclude(r => r.ScanerJsonEvent)
+                .FirstOrDefaultAsync(r => r.Id.Equals(id));
             return View(model);
         }
     }

@@ -108,6 +108,8 @@ namespace DatchikiSharp.Core.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ScanerId");
+
                     b.ToTable("ScanerEvents");
                 });
 
@@ -133,9 +135,25 @@ namespace DatchikiSharp.Core.Migrations
                     b.Navigation("Room");
                 });
 
+            modelBuilder.Entity("DatchikiSharp.Core.Events.ScanerJsonEvent", b =>
+                {
+                    b.HasOne("DatchikiSharp.Core.Entitites.Scaner", "Scaner")
+                        .WithMany("ScanerJsonEvent")
+                        .HasForeignKey("ScanerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Scaner");
+                });
+
             modelBuilder.Entity("DatchikiSharp.Core.Entitites.Room", b =>
                 {
                     b.Navigation("Scaners");
+                });
+
+            modelBuilder.Entity("DatchikiSharp.Core.Entitites.Scaner", b =>
+                {
+                    b.Navigation("ScanerJsonEvent");
                 });
 #pragma warning restore 612, 618
         }

@@ -61,7 +61,7 @@ namespace DatchikSharp.Web.Controllers
             }
             else
             {
-                return View(model);
+                return RedirectToAction("Index");
             }
         }
     }

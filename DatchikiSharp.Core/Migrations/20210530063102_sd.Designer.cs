@@ -9,8 +9,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DatchikiSharp.Core.Migrations
 {
     [DbContext(typeof(ScanerContext))]
-    [Migration("20210529211232_Rework2")]
-    partial class Rework2
+    [Migration("20210530063102_sd")]
+    partial class sd
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -99,10 +99,18 @@ namespace DatchikiSharp.Core.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
+                    b.Property<DateTime>("DateTime")
+                        .HasColumnType("datetime(6)");
+
+                    b.Property<int>("ScanerId")
+                        .HasColumnType("int");
+
                     b.Property<bool>("Status")
                         .HasColumnType("tinyint(1)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("ScanerId");
 
                     b.ToTable("ScanerEvents");
                 });
@@ -129,9 +137,25 @@ namespace DatchikiSharp.Core.Migrations
                     b.Navigation("Room");
                 });
 
+            modelBuilder.Entity("DatchikiSharp.Core.Events.ScanerJsonEvent", b =>
+                {
+                    b.HasOne("DatchikiSharp.Core.Entitites.Scaner", "Scaner")
+                        .WithMany("ScanerJsonEvent")
+                        .HasForeignKey("ScanerId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Scaner");
+                });
+
             modelBuilder.Entity("DatchikiSharp.Core.Entitites.Room", b =>
                 {
                     b.Navigation("Scaners");
+                });
+
+            modelBuilder.Entity("DatchikiSharp.Core.Entitites.Scaner", b =>
+                {
+                    b.Navigation("ScanerJsonEvent");
                 });
 #pragma warning restore 612, 618
         }
