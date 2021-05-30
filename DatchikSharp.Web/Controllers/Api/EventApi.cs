@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using DatchikiSharp.Core;
 using DatchikiSharp.Core.Events;
@@ -17,8 +18,15 @@ namespace DatchikSharp.Web.Controllers.Api
         }
 
         [HttpPost]
-        public async Task<IActionResult> Index([FromBody]ScanerJsonEvent scanerEvent)
+        public async Task<IActionResult> Index([FromBody] ScanerJsonEvent scanerEvenst)
         {
+            var scanerEvent = new ScanerJsonEvent()
+            {
+               
+                ScanerId= scanerEvenst.ScanerId,
+                Status= scanerEvenst.Status,
+                DateTime=DateTime.Now
+            };
             await _context.ScanerEvents.AddAsync(scanerEvent);
             (await _context.Scaners.FindAsync(scanerEvent.ScanerId)).Status = scanerEvent.Status;
             await _context.SaveChangesAsync();

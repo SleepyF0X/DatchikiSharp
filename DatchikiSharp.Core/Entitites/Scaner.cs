@@ -1,3 +1,5 @@
+
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace DatchikiSharp.Core.Entitites

@@ -43,7 +43,7 @@ namespace DatchikSharp.Web.Controllers
             }
             else
             {
-                return View(model);
+                return RedirectToAction("Index");
             }
         }
         public async Task<IActionResult> CreateEditRoom()
