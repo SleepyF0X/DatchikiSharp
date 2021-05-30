@@ -1,24 +1,66 @@
 @model DatchikiSharp.Core.Entitites.Scaner
-<div>
-  <form asp-action="CreateEditScaner" id="form">
-    <div class="validation" asp-validation-summary="ModelOnly"></div>
-    <label>Name:</label><br/>
-    <input type="text" asp-for="Name"/><br/><br/>
-    <span asp-validation-for="Name"></span>
-    <label>Serial number:</label><br/>
-    <input type="text" asp-for="Id"/><br/><br/>
-    <label>Room:</label><br/>
-    <select type="text" name="RoomId" id="roomsSelect">
-    </select>
-    <label>Type:</label><br/>
-    <select asp-for="Type">
-      <option value="1">Movement</option>
-      <option value="2">Smoke</option>
-    </select><br><br>
-    <input type="submit" value="Отправить"/>
-    <div v-for="room in rooms">{{room.id}}</div>
-  </form>
+<div class="card shadow">
+    <div class="card-header py-3">
+        <p class="text-primary m-0 fw-bold">Register Room Settings</p>
+    </div>
+    <div class="card-body">
+        <form asp-action="CreateEditScaner" id="form">
+            <div class="validation" asp-validation-summary="ModelOnly"></div>
+            <div class="row">
+
+                <div class="col">
+                    <div class="mb-3"><label class="form-label"><strong>Name</strong></label><input class="form-control" type="text" asp-for="Name"><span asp-validation-for="Name"></span></div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label"><strong>Room</strong></label><select type="text" class="form-control" name="RoomId" id="roomsSelect">
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3"><label class="form-label"><strong>Serial number:</strong></label><input class="form-control" type="text" asp-for="Id"></div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label" for="country"><strong>Type</strong></label>
+                        <select type="text" asp-for="Type" class="form-control">
+                            <option value="1">Movement</option>
+                            <option value="2">Smoke</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            @*<div v-for="room in rooms">{{room.id}}</div>*@
+            <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save&nbsp;Settings</button></div>
+        </form>
+    </div>
 </div>
+
+@*<div>
+    <form asp-action="CreateEditScaner" id="form">
+        <div class="validation" asp-validation-summary="ModelOnly"></div>
+        <label>Name:</label><br />
+        <input type="text" asp-for="Name" /><br /><br />
+        <span asp-validation-for="Name"></span>
+        <label>Serial number:</label><br />
+        <input type="text" asp-for="Id" /><br /><br />
+        <label>Room:</label><br />
+        <select type="text" name="RoomId" id="roomsSelect">
+        </select>
+        <label>Type:</label><br />
+        <select asp-for="Type">
+            <option value="1">Movement</option>
+            <option value="2">Smoke</option>
+        </select><br><br>
+        <input type="submit" value="Отправить" />
+        <div v-for="room in rooms">{{room.id}}</div>
+    </form>
+</div>*@
+
+
 <script>
     let form = new Vue({
         el: '#form',

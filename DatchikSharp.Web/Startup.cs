@@ -27,7 +27,7 @@ namespace DatchikSharp
             }).AddRazorRuntimeCompilation();
             var cs = _configuration.GetConnectionString("Scaner");
             services.AddDbContext<ScanerContext>(options =>
-                options.UseMySql("server=localhost;database=scanerDB;userid=root;password=Kotofey_486;", new MySqlServerVersion(new Version(8, 0, 25))));
+                options.UseMySql("server=localhost;database=scanerDB;userid=root;password=147258369;", new MySqlServerVersion(new Version(8, 0, 25))));
         }
 
 

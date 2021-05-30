@@ -1,15 +1,26 @@
 @model DatchikiSharp.Core.Entitites.Room
-<div>
-    <form asp-action="CreateEditRoom" id="form">
-        <label>Number:</label><br/>
-        <input type="text" asp-for="Number"/><br/><br/>
-        <span asp-validation-for="Number"></span>
-        <label>Size:</label><br/>
-        <input type="text" asp-for="Size"/><br/><br/>
-        <label>Type:</label><br/>
-        <select type="text" asp-for="Type"/><br/><br/>
-              <option value="1">Lecture</option>
-              <option value="2">Laboratory</option>
-        <input type="submit" value="Отправить"/>
-    </form>
+<div class="card shadow">
+    <div class="card-header py-3">
+        <p class="text-primary m-0 fw-bold">Register Room Settings</p>
+    </div>
+    <div class="card-body">
+        <form asp-action="CreateEditRoom" id="form">
+            <div class="mb-3"><label class="form-label"><strong>Number</strong></label><input class="form-control" type="text" asp-for="Number"><span asp-validation-for="Number"></span></div>
+            <div class="row">
+                <div class="col">
+                    <div class="mb-3"><label class="form-label"><strong>Size</strong></label><input class="form-control" type="text" asp-for="Size"></div>
+                </div>
+                <div class="col">
+                    <div class="mb-3">
+                        <label class="form-label" for="country"><strong>Type</strong></label>
+                        <select type="text" asp-for="Type" class="form-control">
+                        <option value="1">Lecture</option>
+                        <option value="2">Laboratory</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="mb-3"><button class="btn btn-primary btn-sm" type="submit">Save&nbsp;Settings</button></div>
+        </form>
+    </div>
 </div>

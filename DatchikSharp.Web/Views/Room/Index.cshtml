@@ -4,8 +4,8 @@
 {
     if (room.Scaners.Where(s => s.Type == ScanerTypes.Smoke).Any(s => s.Status == true))
     {
-        <div class="col-md-11 col-xl-11 mt-4">
-            <div class="card shadow border-start-info py-2 bg-danger">
+        <a href="/room/@room.Id" class="col-md-12 col-xl-12 text-decoration-none">
+            <div class="card shadow border-start-info py-2 bg-danger mt-4">
                 <div class="card-body">
                     <div class="row align-items-center no-gutters">
                         <div class="col me-2">
@@ -23,12 +23,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     }
     else if (room.Status)
     {
-        <div class="col-md-11 col-xl-11 mt-4">
-            <div class="card shadow border-start-info py-2">
+        <a href="/room/@room.Id" class="col-md-12 col-xl-12 mt-4 text-decoration-none">
+            <div class="card shadow border-start-info py-2 mt-4">
                 <div class="card-body">
                     <div class="row align-items-center no-gutters">
                         <div class="col me-2">
@@ -46,12 +46,12 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     }
     else if (!room.Status)
     {
-        <div class="col-md-11 col-xl-11 mt-4">
-            <div class="card shadow border-start-info py-2">
+        <a href="/room/@room.Id" class="col-md-12 col-xl-12 mt-4 text-decoration-none">
+            <div class="card shadow border-start-info py-2 mt-4">
                 <div class="card-body">
                     <div class="row align-items-center no-gutters">
                         <div class="col me-2">
@@ -69,6 +69,6 @@
                     </div>
                 </div>
             </div>
-        </div>
+        </a>
     }
 }
